@@ -1,0 +1,50 @@
+GET http://localhost:8081/api/products
+
+###
+
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "name": "Tapis de souris XL",
+  "description": "Tapis de souris grand format",
+  "price": 15.99,
+  "quantity": 40
+}
+
+###
+
+GET http://localhost:8081/api/products/1
+
+###
+
+PUT http://localhost:8081/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Clavier mécanique RGB",
+  "description": "Clavier mécanique rétroéclairé RGB, switch rouge",
+  "price": 89.99,
+  "quantity": 45
+}
+
+###
+
+# 400 attendu (name manquant, price négatif)
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "description": "Produit invalide",
+  "price": -10,
+  "quantity": 5
+}
+
+###
+
+# 404 attendu
+GET http://localhost:8081/api/products/9999
+
+###
+
+DELETE http://localhost:8081/api/products/1

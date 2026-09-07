@@ -1,0 +1,45 @@
+@gateway = http://localhost:8080
+
+### 1. Créer un livre
+POST {{gateway}}/api/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884",
+  "totalCopies": 1
+}
+
+### 2. GET livres
+GET {{gateway}}/api/books
+
+### 3. Créer un emprunt
+POST {{gateway}}/api/loans
+Content-Type: application/json
+
+{
+  "bookId": 1,
+  "memberName": "Ayoub"
+}
+
+### 4. 2e emprunt même livre -> 409 attendu
+POST {{gateway}}/api/loans
+Content-Type: application/json
+
+{
+  "bookId": 1,
+  "memberName": "Jean"
+}
+
+### 5. GET emprunts
+GET {{gateway}}/api/loans
+
+### 6. Retourner le 1er emprunt
+PATCH {{gateway}}/api/loans/1/return
+
+### 7. Retour à nouveau -> 409 attendu
+PATCH {{gateway}}/api/loans/1/return
+
+### 8. GET du livre -> stock remonté à 1
+GET {{gateway}}/api/books/1

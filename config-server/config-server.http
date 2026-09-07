@@ -1,0 +1,2 @@
+GET http://localhost:8888/product-service/default
+Accept: application/json

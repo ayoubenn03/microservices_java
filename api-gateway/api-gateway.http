@@ -1,0 +1,6 @@
+GET http://localhost:8080/actuator/health
+
+###
+
+# 503 attendu tant que product-service n'existe pas
+GET http://localhost:8080/api/products
